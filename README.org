@@ -1,5 +1,5 @@
 * Obtaining
-  The project is designed to work with =quicklisp=. Supposing
+  The project is designed to work with [[http://www.quicklisp.org/beta/][Quicklisp]]. Supposing
   you have default Quicklisp configuration, the location of
   your local projects is in =$HOME/quicklisp/local-projects=
   clone this repository using Git:
@@ -27,6 +27,7 @@
 
 ** Thin wrapper around C API
    /Status: Mostly finished, untested./
+   
    This is the one to one translation of *WhiteDB* C API into Lisp.
 
 ** Sequence traversal
@@ -39,6 +40,7 @@
 
 ** Zipper tree traversal
    /Status: Planned./
+   
    Zipper is an interesting [[http://en.wikipedia.org/wiki/Zipper_%2528data_structure%2529][data structure]], designed by Gérard Huet.
    It is used for traversing trees in any direction. The code
    implementing this data structure resides in =cl-whitedb.zipper=
@@ -46,17 +48,20 @@
 
 ** Structures
    /Status: Some work has been done./
+   
    An attempt to provide struct-like macros for defining complex
    data structures using same storage engine. This code resides
    in =cl-whitedb.structures= package.
 
 ** Search
    /Status: Planned./
+   
    Informed and uninformed search algorithms that search the dabase
    using selected strategy.
    
 * Testing
   /Status: No tests so far./
+  
   In order to test the installed library execute:
 
   : (asdf:oos 'asdf:test-op :cl-whitedb)
