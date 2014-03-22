@@ -1,0 +1,66 @@
+* Obtaining
+  The project is designed to work with =quicklisp=. Supposing
+  you have default Quicklisp configuration, the location of
+  your local projects is in =$HOME/quicklisp/local-projects=
+  clone this repository using Git:
+  
+  : cd ~/quicklisp/local-projects
+  : git clone https://github.com/wvxvw/cl-whitedb.git
+
+  The project should now be accessible for use with:
+
+  : (ql:quickload :cl-whitedb)
+
+* Installing
+  Beside the Lisp part, you would need to download and compile
+  [[http://whitedb.org/install.html][WhiteDB]]. Follow the link for step-by-step instructions.
+  The CFFI bindings that locate the shared library can be found
+  in [[./src/bindings.lisp][bindings.lisp]]. Modify this file if you have =libwgdb.so=
+  installed in a place not listed there.
+
+* Running
+  TBD
+
+* Features
+  There are several different approaches to accessing the database
+  that I'm trying to pursue:
+
+** Thin wrapper around C API
+   /Status: Mostly finished, untested./
+   This is the one to one translation of *WhiteDB* C API into Lisp.
+
+** Sequence traversal
+   /Status: Some work has been done./
+   
+   The code dealing with traversing the contents of the database
+   as if it was a sequence of values resides in =cl-whitedb.sequences=
+   package. It provides tools similar to standard Lisp sequence
+   traversal: mapping, reducing, finding.
+
+** Zipper tree traversal
+   /Status: Planned./
+   Zipper is an interesting [[http://en.wikipedia.org/wiki/Zipper_%2528data_structure%2529][data structure]], designed by Gérard Huet.
+   It is used for traversing trees in any direction. The code
+   implementing this data structure resides in =cl-whitedb.zipper=
+   package.
+
+** Structures
+   /Status: Some work has been done./
+   An attempt to provide struct-like macros for defining complex
+   data structures using same storage engine. This code resides
+   in =cl-whitedb.structures= package.
+
+** Search
+   /Status: Planned./
+   Informed and uninformed search algorithms that search the dabase
+   using selected strategy.
+   
+* Testing
+  /Status: No tests so far./
+  In order to test the installed library execute:
+
+  : (asdf:oos 'asdf:test-op :cl-whitedb)
+
+* Reporting Bugs
+  Report bugs here:
+  [[https://github.com/wvxvw/cl-whitedb/issues]]
